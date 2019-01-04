@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    style="@style/CardView"
+    app:cardBackgroundColor="@color/backgrounddark"
+    android:layout_height="wrap_content">
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:text="Networking"-->
+            <!--android:textSize="20sp"-->
+            <!--android:id="@+id/tv_header"-->
+            <!--android:gravity="center"-->
+            <!--android:padding="10dp"-->
+            <!--android:background="@drawable/rounded_text"-->
+            <!--android:layout_height="wrap_content" />-->
+
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:text="Take Attendance"-->
+            <!--android:layout_margin="20dp"-->
+            <!--style="@style/darkroundedet"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_below="@+id/tv_header"-->
+            <!--android:id="@+id/tv_takeAttendance"-->
+            <!--android:layout_height="wrap_content" />-->
+
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:text="View Report"-->
+            <!--android:layout_margin="20dp"-->
+            <!--style="@style/darkroundedet"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_below="@+id/tv_header"-->
+            <!--android:id="@+id/tv_takeAttendance"-->
+            <!--android:layout_height="wrap_content" />-->
+
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:text="Edit Class"-->
+            <!--android:layout_margin="20dp"-->
+            <!--style="@style/darkroundedet"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_below="@+id/tv_header"-->
+            <!--android:id="@+id/tv_takeAttendance"-->
+            <!--android:layout_height="wrap_content" />-->
+    <!--</RelativeLayout>-->
+
+
+</android.support.v7.widget.CardView>
