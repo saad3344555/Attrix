@@ -18,13 +18,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Home extends AppCompatActivity implements ClassRyclerAdapter.CameraInterface {
+public class Home extends AppCompatActivity implements ClassRyclerAdapter.CameraInterface,FirebaseHelper.GetClassCallback {
     //home
     private List<ClassModel> Classes = new ArrayList<>();
     private RecyclerView ClassRecyclerView;
     private ClassRyclerAdapter ClassAdapter;
     private static final int RC_CAMERA = 420;
-
+    FirebaseHelper firebaseHelper;
     FloatingActionButton floatingActionButton;
 
     @Override
@@ -32,6 +32,11 @@ public class Home extends AppCompatActivity implements ClassRyclerAdapter.Camera
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.home);
+
+
+        firebaseHelper = new FirebaseHelper(this);
+        firebaseHelper.setGetClassCallback(this);
+        firebaseHelper.getClasses(AppGenericClass.getInstance(this).getPrefs(AppGenericClass.TOKEN));
 
         ClassRecyclerView = (RecyclerView) findViewById(R.id.classrecylerv);
         ClassAdapter = new ClassRyclerAdapter(Classes, this, this);
@@ -41,26 +46,13 @@ public class Home extends AppCompatActivity implements ClassRyclerAdapter.Camera
         ClassRecyclerView.setAdapter(ClassAdapter);
 
 
-        PrepareClasses();
-
-
         floatingActionButton = findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Home.this, ClassRegisteration.class));
+                startActivityForResult(new Intent(Home.this, ClassRegisteration.class),999);
             }
         });
-    }
-
-    private void PrepareClasses() {
-        this.Classes.add(new ClassModel("606", R.drawable.google, "Physics II", "orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."));
-        this.Classes.add(new ClassModel("603", R.drawable.facebook, "ICS II", "orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."));
-        this.Classes.add(new ClassModel("600", R.drawable.google, "Stats II", "orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."));
-        this.Classes.add(new ClassModel("604", R.drawable.facebook, "Calculas II", "orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."));
-        this.Classes.add(new ClassModel("504", R.drawable.google, "English II", "orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."));
-        this.Classes.add(new ClassModel("304", R.drawable.facebook, "Urdu", "orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."));
-
     }
 
     @Override
@@ -89,6 +81,18 @@ public class Home extends AppCompatActivity implements ClassRyclerAdapter.Camera
                     startActivity(in);
                 }
                 break;
+
+            case 999:
+                if(resultCode == 200){
+                    firebaseHelper.getClasses(AppGenericClass.getInstance(Home.this).getPrefs(AppGenericClass.TOKEN));
+                }
+                break;
         }
+    }
+
+    @Override
+    public void getClasses(List<ClassModel> classModel) {
+        Classes = classModel;
+        ClassRecyclerView.setAdapter(new ClassRyclerAdapter(Classes,Home.this,Home.this));
     }
 }

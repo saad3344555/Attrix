@@ -1,15 +1,119 @@
 package com.example.saq.fyp;
 
-import android.support.v7.widget.RecyclerView;
+import java.util.List;
 
 public class ClassModel {
-    int Image;
-    String Title, Detail,courseNo;
+    int image;
+    String title, detail, courseNo;
+    private String teacherId;
+    private String batchNo;
+    private String section;
+    private String classCode;
 
-    public ClassModel(String courseNo,int image, String Title, String Detail){
-        this.Image = image;
-        this.Title = Title;
-        this.Detail = Detail;
+    public List<String> getEnrolledStudents() {
+        return enrolledStudents;
+    }
+
+    public void setEnrolledStudents(List<String> enrolledStudents) {
+        this.enrolledStudents = enrolledStudents;
+    }
+
+    private List<String> enrolledStudents;
+
+    public String getClassCode() {
+        return classCode;
+    }
+
+    public void setClassCode(String classCode) {
+        this.classCode = classCode;
+    }
+
+    public void setDetail() {
+        this.detail = program.toUpperCase() + " " + shift + " " + section.toUpperCase();
+    }
+
+    private String yearOfTeaching;
+    private String shift;
+    private String program;
+    private String shiftSectionProgram;
+    private String classId;
+
+    public ClassModel() {
+
+    }
+
+    public String getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getBatchNo() {
+        return batchNo;
+    }
+
+    public void setBatchNo(String batchNo) {
+        this.batchNo = batchNo;
+    }
+
+    public String getSection() {
+        return section;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
+    }
+
+    public String getYearOfTeaching() {
+        return yearOfTeaching;
+    }
+
+    public void setYearOfTeaching(String yearOfTeaching) {
+        this.yearOfTeaching = yearOfTeaching;
+    }
+
+    public String getShift() {
+        return shift;
+    }
+
+    public void setShift(String shift) {
+        this.shift = shift;
+    }
+
+    public String getProgram() {
+        return program;
+    }
+
+    public void setProgram(String program) {
+        this.program = program;
+    }
+
+    public String getShiftSectionProgram() {
+        return shiftSectionProgram;
+    }
+
+    public void setShiftSectionProgram(String year) {
+        this.shiftSectionProgram = this.section + "-" + this.shift + "-" + this.program + "-" + year;
+    }
+
+    public String getClassId() {
+        return classId;
+    }
+
+    public void setClassId(String year) {
+        this.classId = yearOfTeaching + "-" + year;
+    }
+
+    public ClassModel(String courseNo, int image, String Title, String Detail) {
+        this.image = image;
+        this.title = Title;
+        this.detail = Detail;
         this.courseNo = courseNo;
 
     }
@@ -23,14 +127,14 @@ public class ClassModel {
     }
 
     public int getImage() {
-        return Image;
+        return image;
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public String getDetail() {
-        return Detail;
+        return detail;
     }
 }

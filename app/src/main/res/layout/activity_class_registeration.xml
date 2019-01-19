@@ -43,9 +43,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"
+                        android:id="@+id/et_classYear"
                         android:layout_marginRight="20dp"
                         android:layout_marginBottom="5dp"
-                        android:hint="Instructor Name" />
+                        android:hint="Class Year" />
 
                     <EditText
                         style="@style/darkroundedet"
@@ -53,6 +54,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"
+                        android:id="@+id/et_courseId"
                         android:layout_marginRight="20dp"
                         android:layout_marginBottom="5dp"
                         android:hint="Course Id" />
@@ -63,6 +65,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"
+                        android:id="@+id/et_courseName"
                         android:layout_marginRight="20dp"
                         android:layout_marginBottom="5dp"
                         android:hint="Course Name" />
@@ -76,6 +79,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginBottom="5dp"
+                        android:id="@+id/et_program"
                         android:hint="Program" />
 
                     <EditText
@@ -84,6 +88,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"
+                        android:id="@+id/et_section"
                         android:layout_marginRight="20dp"
                         android:layout_marginBottom="5dp"
                         android:hint="Section" />
@@ -94,9 +99,35 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"
+                        android:id="@+id/et_shift"
                         android:layout_marginRight="20dp"
                         android:layout_marginBottom="5dp"
                         android:hint="Shift" />
+
+
+                    <EditText
+                        style="@style/darkroundedet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/et_batchNo"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:hint="Batch of Teaching" />
+
+
+                    <EditText
+                        style="@style/darkroundedet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/et_classCode"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:hint="Class Code" />
+
 
                     <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/tv_register"

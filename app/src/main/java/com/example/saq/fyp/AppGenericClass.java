@@ -6,10 +6,14 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class AppGenericClass {
 
+
+    public static final String PREFS = "AttrixPrefs";
+    public static final String TOKEN= "TOKEN";
 
     Context context;
     private AppGenericClass(Context context){
@@ -37,5 +41,21 @@ public class AppGenericClass {
         DatePickerDialog dialog = new DatePickerDialog(context, listener ,year,month,day);
 
         dialog.show();
+    }
+
+    public void setPrefs(String key,String value){
+        context.getSharedPreferences(PREFS,Context.MODE_PRIVATE).edit().putString(key,value).commit();
+    }
+
+    public String getPrefs(String key){
+        return context.getSharedPreferences(PREFS,Context.MODE_PRIVATE).getString(key,"");
+    }
+
+    public String getCurrentYear(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+        Calendar cal = Calendar.getInstance();
+
+        String year = sdf.format(cal.getTime());
+        return year;
     }
 }
