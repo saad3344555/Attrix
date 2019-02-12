@@ -1,50 +1,45 @@
 package com.example.saq.fyp;
 
+import com.example.saq.fyp.model.Attendance;
+
+import java.util.List;
+
 public class AttendanceModel {
-    private String studentName;
-    private String fathersName;
-    private String seatNo;
+
+
+    private List<Attendance> attendanceList;
     private String sectionName;
     private String shift;
     private String program;
-
-    private boolean isPresent;
+    private String year;
+    private String courseNo;
 
     public AttendanceModel() {
     }
 
-    public AttendanceModel(String studentName, String fathersName, String seatNo, String sectionName, String shift, String program, boolean isPresent) {
-        this.studentName = studentName;
-        this.fathersName = fathersName;
-        this.seatNo = seatNo;
+    public AttendanceModel(List<Attendance> attendanceList, String sectionName, String shift, String program, String year, String courseNo) {
+        this.attendanceList = attendanceList;
         this.sectionName = sectionName;
         this.shift = shift;
         this.program = program;
-        this.isPresent = isPresent;
+        this.year = year;
+        this.courseNo = courseNo;
     }
 
-    public String getStudentName() {
-        return studentName;
+    public List<Attendance> getAttendanceList() {
+        return attendanceList;
     }
 
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
+    public void setAttendanceList(List<Attendance> attendanceList) {
+        this.attendanceList = attendanceList;
     }
 
-    public String getFathersName() {
-        return fathersName;
+    public String getCourseNo() {
+        return courseNo;
     }
 
-    public void setFathersName(String fathersName) {
-        this.fathersName = fathersName;
-    }
-
-    public String getSeatNo() {
-        return seatNo;
-    }
-
-    public void setSeatNo(String seatNo) {
-        this.seatNo = seatNo;
+    public void setCourseNo(String courseNo) {
+        this.courseNo = courseNo;
     }
 
     public String getSectionName() {
@@ -71,11 +66,11 @@ public class AttendanceModel {
         this.program = program;
     }
 
-    public boolean isPresent() {
-        return isPresent;
+    public String getYear() {
+        return year;
     }
 
-    public void setPresent(boolean present) {
-        isPresent = present;
+    public void setYear(String year) {
+        this.year = year;
     }
 }

@@ -12,7 +12,9 @@
     </item>
 
     <item>
-        <bitmap android:src="@drawable/ba" android:alpha="0.2" ></bitmap>
+        <bitmap android:src="@drawable/ba" android:alpha="0.2" >
+
+        </bitmap>
     </item>
 
     <item android:top="220dp" android:bottom="-100dp" android:left="0dp" android:right="-220dp">
@@ -20,7 +22,9 @@
             <shape android:shape="rectangle">
 
             </shape>
-            <color android:color="@color/LightBackgroundColor"></color>
+            <color android:color="@color/LightBackgroundColor">
+
+            </color>
         </rotate>
 
     </item>

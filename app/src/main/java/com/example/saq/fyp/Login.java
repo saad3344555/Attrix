@@ -47,6 +47,7 @@ public class Login extends AppCompatActivity implements FirebaseHelper.SignInCal
         if (code == 200) {
             AppGenericClass.getInstance(this).setPrefs(AppGenericClass.TOKEN,id);
             startActivity(new Intent(Login.this, Home.class));
+            finish();
         }
         else if (code == 201)
             Toast.makeText(Login.this, "Incorrect Password", Toast.LENGTH_SHORT).show();

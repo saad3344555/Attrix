@@ -9,15 +9,15 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         android:fitsSystemWindows="true">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
+            style="@style/Base.Theme.AppCompat.Light.DarkActionBar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            style="@style/Base.Theme.AppCompat.Light.DarkActionBar"
             app:contentScrim="@color/transparet_green"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
@@ -26,34 +26,35 @@
                 android:id="@+id/iv_pic"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_collapseMode="parallax"
-                android:scaleType="centerCrop" />
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:layout_collapseMode="parallax" />
 
             <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/toolbar"
+                style="@style/Base.Theme.AppCompat.Light.DarkActionBar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                android:id="@+id/toolbar"
-                app:layout_collapseMode="pin"
-                style="@style/Base.Theme.AppCompat.Light.DarkActionBar" />
+                app:layout_collapseMode="pin" />
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_height="match_parent"
         android:background="@color/backgrounddark"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
         <EditText
             android:id="@+id/et_date"
             android:layout_width="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:backgroundTint="@color/white"
             android:clickable="true"
             android:focusable="false"
@@ -63,37 +64,38 @@
 
         <TextView
             android:id="@+id/bt_markAttendance"
+            style="@style/roundedbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#177"
-            android:layout_marginTop="5dp"
+            android:layout_gravity="bottom"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="Mark Attendance"
-            style="@style/roundedbutton" />
+            android:layout_marginTop="5dp"
+            android:background="#177"
+            android:text="Mark Attendance" />
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/card2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/card"
-            android:layout_margin="10dp"
-            app:cardBackgroundColor="@color/backgrounddark"
-            app:cardCornerRadius="10dp">
-
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_attendance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
+        <!--<android.support.v7.widget.CardView-->
+        <!--android:id="@+id/card2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@id/card"-->
+        <!--android:layout_margin="10dp"-->
+        <!--app:cardBackgroundColor="@color/backgrounddark"-->
+        <!--app:cardCornerRadius="10dp">-->
 
 
-            </android.support.v7.widget.RecyclerView>
+        <!--&lt;!&ndash;<android.support.v7.widget.RecyclerView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/rv_attendance"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:orientation="vertical"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:padding="10dp">&ndash;&gt;-->
 
-        </android.support.v7.widget.CardView>
+
+        <!--&lt;!&ndash;</android.support.v7.widget.RecyclerView>&ndash;&gt;-->
+
+        <!--</android.support.v7.widget.CardView>-->
 
     </LinearLayout>
 

@@ -9,6 +9,11 @@ public class ClassModel {
     private String batchNo;
     private String section;
     private String classCode;
+    private String yearOfTeaching;
+    private String shift;
+    private String program;
+    private String shiftSectionProgram;
+    private String classId;
 
     public List<String> getEnrolledStudents() {
         return enrolledStudents;
@@ -29,14 +34,9 @@ public class ClassModel {
     }
 
     public void setDetail() {
-        this.detail = program.toUpperCase() + " " + shift + " " + section.toUpperCase();
+        this.detail = program.toUpperCase() + yearOfTeaching + " Year" + " " + shift + " " + section.toUpperCase();
     }
 
-    private String yearOfTeaching;
-    private String shift;
-    private String program;
-    private String shiftSectionProgram;
-    private String classId;
 
     public ClassModel() {
 
@@ -135,6 +135,6 @@ public class ClassModel {
     }
 
     public String getDetail() {
-        return detail;
+        return this.detail;
     }
 }

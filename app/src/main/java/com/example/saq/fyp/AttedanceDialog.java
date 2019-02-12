@@ -43,9 +43,9 @@ public class AttedanceDialog extends Dialog {
         tv_classId = findViewById(R.id.tv_classId);
         tv_seatNo = findViewById(R.id.tv_seatNo);
 
-        tv_seatNo.setText(attendanceModel.getSeatNo());
-        tv_fatherName.setText(attendanceModel.getFathersName());
-        tv_name.setText(attendanceModel.getStudentName());
+        //tv_seatNo.setText(attendanceModel.get());
+       // tv_fatherName.setText(attendanceModel.getFathersName());
+        //tv_name.setText(attendanceModel.getStudentName());
         tv_classId.setText(attendanceModel.getProgram()+ " " +
                 attendanceModel.getShift() + "" +
                 attendanceModel.getSectionName());

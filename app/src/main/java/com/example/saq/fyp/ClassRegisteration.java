@@ -16,12 +16,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClassRegisteration extends AppCompatActivity implements View.OnClickListener,FirebaseHelper.ClassCallback {
+public class ClassRegisteration extends AppCompatActivity implements View.OnClickListener, FirebaseHelper.ClassCallback {
 
     Toolbar toolbar;
     TextView tv_register;
-    private EditText et_program, et_section, et_shift, et_batch, et_classYear, et_courseName, et_courseNumber,et_classCode;
+    private EditText et_program, et_section, et_shift, et_batch, et_classYear, et_courseName, et_courseNumber, et_classCode;
     FirebaseHelper firebaseHelper;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,10 +76,8 @@ public class ClassRegisteration extends AppCompatActivity implements View.OnClic
 
     private ClassModel getClassModel() {
         ClassModel cm = new ClassModel();
-
         List<String> enrolledStudents = new ArrayList<>();
         enrolledStudents.add("-1");
-
         cm.setYearOfTeaching(et_classYear.getText().toString());
         cm.setBatchNo(et_batch.getText().toString());
         cm.setYearOfTeaching(et_classYear.getText().toString());
@@ -98,12 +97,11 @@ public class ClassRegisteration extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onCreated(int code) {
-        if (code ==200) {
+        if (code == 200) {
             Toast.makeText(this, "Class Created", Toast.LENGTH_SHORT).show();
             setResult(code);
             finish();
-        }
-        else {
+        } else {
             Toast.makeText(this, "Class Creation Failed", Toast.LENGTH_SHORT).show();
             setResult(code);
             finish();

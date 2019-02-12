@@ -1,27 +1,50 @@
 package com.example.saq.fyp;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.saq.fyp.model.Attendance;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+
+import dmax.dialog.SpotsDialog;
 
 public class EditAttendance extends AppCompatActivity {
     EditText et_date;
     RecyclerView rv_attendance;
     Toolbar toolbar;
-    List<AttendanceModel> attendanceModels = new ArrayList<>();
+    List<Attendance> attendanceModels;
+    String date;
+    AlertDialog dialog;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance_edit);
+        dialog = new SpotsDialog.Builder().setContext(this).build();
+        dialog.setMessage("Please Wait");
+        dialog.setTitle("Fetching Records");
+
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -29,50 +52,85 @@ public class EditAttendance extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         rv_attendance = findViewById(R.id.rv_attendance);
+        rv_attendance.setVisibility(View.GONE);
+
         et_date = findViewById(R.id.et_date);
+
 
         et_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AppGenericClass.getInstance(EditAttendance.this).showDatePicker(et_date);
+                showDatePicker();
+                //date = AppGenericClass.getInstance(EditAttendance.this).showDatePicker(et_date);
             }
         });
 
         rv_attendance.setLayoutManager(new LinearLayoutManager(this));
-        populateDummyData();
-        rv_attendance.setAdapter(new AttendanceListAdapter(this,attendanceModels));
+        //populateDummyData();
+        //rv_attendance.setAdapter(new AttendanceListAdapter(this, attendanceModels));
     }
 
-    public void populateDummyData(){
-        attendanceModels.add(new AttendanceModel("Muhammad Taha",
-                "Muhammad Arshad",
-                "B14101075","Sec-A","Morning","BSCS",true));
+    private void showDatePicker() {
+        int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        int month = Calendar.getInstance().get(Calendar.MONTH);
+        int year = Calendar.getInstance().get(Calendar.YEAR);
 
-        attendanceModels.add(new AttendanceModel("Maaz Aftab",
-                "Aftab Ahemd",
-                "B14101089","Sec-A","Morning","BSCS",true));
+        DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                date = year + "-" + (month + 1) + "-" + day;
+                et_date.setText(date);
+                callService(date);
+            }
+        };
 
-        attendanceModels.add(new AttendanceModel("Muhammad Zakir",
-                "Saleem Khan",
-                "B14101090","Sec-A","Morning","BSCS",true));
+        DatePickerDialog dialog = new DatePickerDialog(this, listener, year, month, day);
 
-        attendanceModels.add(new AttendanceModel("Salman Ashraf",
-                "Ashraf Khan",
-                "B14101091","Sec-A","Morning","BSCS",false));
-
-        attendanceModels.add(new AttendanceModel("Wajeeha Chaudhry",
-                "Chaudhry Ahmed",
-                "B14101093","Sec-A","Morning","BSCS",true));
-
-        attendanceModels.add(new AttendanceModel("Huma Khan",
-                "Ali Khan",
-                "B14101094","Sec-A","Morning","BSCS",false));
-
-        attendanceModels.add(new AttendanceModel("Kamran Tariq",
-                "Tariq Aziz",
-                "B14101099","Sec-A","Morning","BSCS",true));
-
+        dialog.show();
     }
+
+    private void callService(String date) {
+        dialog.show();
+        attendanceModels = new ArrayList<>();
+
+        FirebaseDatabase.getInstance().getReference("Attendance").child(date).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                dialog.dismiss();
+                if (dataSnapshot.getChildrenCount() > 0) {
+                    Log.e("key", dataSnapshot.getKey());
+                    Log.e("value", dataSnapshot.getValue().toString());
+                    AttendanceModel attendanceModel = dataSnapshot.getValue(AttendanceModel.class);
+                    if (isClassMatched(attendanceModel)) {
+                        attendanceModels.addAll(attendanceModel.getAttendanceList());
+                        rv_attendance.setVisibility(View.VISIBLE);
+                        rv_attendance.setAdapter(new AttendanceListAdapter(EditAttendance.this, attendanceModels));
+                    }
+                } else
+                    Toast.makeText(EditAttendance.this, "No records found!", Toast.LENGTH_SHORT).show();
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                dialog.dismiss();
+                Toast.makeText(EditAttendance.this, "" + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private boolean isClassMatched(AttendanceModel attendanceModel) {
+        if (attendanceModel.getYear().equals(Home.SELECTED_CLASS.getYearOfTeaching() + "-"
+                + new SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime()))
+                && attendanceModel.getProgram().equals(Home.SELECTED_CLASS.getProgram())
+                && attendanceModel.getSectionName().equals(Home.SELECTED_CLASS.getSection())
+                && attendanceModel.getShift().equals(Home.SELECTED_CLASS.getShift())
+                && attendanceModel.getCourseNo().equals(Home.SELECTED_CLASS.courseNo)) {
+            return true;
+        }
+        return false;
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
