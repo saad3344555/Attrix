@@ -14,7 +14,9 @@
         android:layout_marginBottom="20dp"
         android:background="@color/OurDark"
         app:navigationIcon="@drawable/ic_plus_white_18dp"
-        app:title="Networking II"></android.support.v7.widget.Toolbar>
+        app:title="Networking II">
+
+    </android.support.v7.widget.Toolbar>
 
 
     <TableLayout

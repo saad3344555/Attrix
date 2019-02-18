@@ -82,7 +82,8 @@ public class ClassRyclerAdapter extends RecyclerView.Adapter<ClassRyclerAdapter.
             iv_report.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    context.startActivity(new Intent(context, InClass.class));
+                    classSelectedListener.onClassSelected(Classes.get(getAdapterPosition()));
+                    context.startActivity(new Intent(context, ClassDetailsActivity.class));
                 }
             });
 

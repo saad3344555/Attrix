@@ -12,6 +12,7 @@ public class Attendance {
     }
 
     public Attendance(String face_id, boolean is_present) {
+
         this.face_id = face_id;
         this.is_present = is_present;
     }

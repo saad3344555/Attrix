@@ -5,13 +5,8 @@
             android:shape="rectangle">
 
             <solid
-                android:color="#ffffff"/>
+                android:color="#FF5722"/>
 
-
-            <corners
-                android:bottomRightRadius="30dp"
-
-                />
         </shape>
     </item>
 </selector>

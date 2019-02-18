@@ -302,6 +302,10 @@ public class MarkAttendance extends AppCompatActivity {
         protected void onPostExecute(Person person) {
             iv_pic.setImageBitmap(drawRectOnImage(Home.ATTENDACE_IMAGE, facesDetected, person.name));
             openEditAttendanceActivity();
+            bt_markAttendance.setBackground(getDrawable(R.drawable.socialroundedbutton));
+            bt_markAttendance.setText("Attendance Marked!");
+            bt_markAttendance.setTextColor(Color.WHITE);
+            bt_markAttendance.setEnabled(false);
         }
 
         @Override
@@ -372,6 +376,6 @@ public class MarkAttendance extends AppCompatActivity {
         attendanceModel.setShift(Home.SELECTED_CLASS.getShift());
         attendanceModel.setCourseNo(Home.SELECTED_CLASS.getCourseNo());
         attendanceModel.setYear(Home.SELECTED_CLASS.getYearOfTeaching() + "-" + new SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime()));
-        FirebaseDatabase.getInstance().getReference("Attendance").child(date).setValue(attendanceModel);
+        FirebaseDatabase.getInstance().getReference("Attendance").child(Home.SELECTED_CLASS.courseNo).child(date).setValue(attendanceModel);
     }
 }
