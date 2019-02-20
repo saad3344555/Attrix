@@ -3,7 +3,6 @@ package com.example.saq.fyp;
 import java.util.List;
 
 public class ClassModel {
-    int image;
     String title, detail, courseNo;
     private String teacherId;
     private String batchNo;
@@ -14,6 +13,7 @@ public class ClassModel {
     private String program;
     private String shiftSectionProgram;
     private String classId;
+    private List<String> enrolledStudents;
 
     public List<String> getEnrolledStudents() {
         return enrolledStudents;
@@ -23,7 +23,7 @@ public class ClassModel {
         this.enrolledStudents = enrolledStudents;
     }
 
-    private List<String> enrolledStudents;
+
 
     public String getClassCode() {
         return classCode;
@@ -110,8 +110,7 @@ public class ClassModel {
         this.classId = yearOfTeaching + "-" + year;
     }
 
-    public ClassModel(String courseNo, int image, String Title, String Detail) {
-        this.image = image;
+    public ClassModel(String courseNo, String Title, String Detail) {
         this.title = Title;
         this.detail = Detail;
         this.courseNo = courseNo;
@@ -126,9 +125,6 @@ public class ClassModel {
         this.courseNo = courseNo;
     }
 
-    public int getImage() {
-        return image;
-    }
 
     public String getTitle() {
         return title;
