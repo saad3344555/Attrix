@@ -1,5 +1,7 @@
 package com.example.saq.fyp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +24,14 @@ public class ClassRegisteration extends AppCompatActivity implements View.OnClic
     TextView tv_register;
     private EditText et_program, et_section, et_shift, et_batch, et_classYear, et_courseName, et_courseNumber, et_classCode;
     FirebaseHelper firebaseHelper;
+    String shiftsOptions[] = {"Morning", "Evening"};
+    String programOptions[] = {"CS", "SE"};
+    String yearOptions[] = {"1", "2", "3", "4"};
+    String sectionOptions[] = {"A", "B"};
+    String selectedShift = "";
+    String selectedPgm = "";
+    String selectedYear = "";
+    String selectedSec = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,6 +58,75 @@ public class ClassRegisteration extends AppCompatActivity implements View.OnClic
         et_courseNumber = findViewById(R.id.et_courseId);
 
         firebaseHelper = new FirebaseHelper(this);
+        et_shift.setClickable(true);
+        et_shift.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(ClassRegisteration.this);
+                mBuilder.setTitle("Choose Shift");
+                mBuilder.setSingleChoiceItems(shiftsOptions, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        selectedShift = shiftsOptions[i];
+                        et_shift.setText(selectedShift);
+                        dialogInterface.dismiss();
+                    }
+                });
+                mBuilder.show();
+            }
+        });
+        et_classYear.setClickable(true);
+        et_classYear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(ClassRegisteration.this);
+                mBuilder.setTitle("Choose Year");
+                mBuilder.setSingleChoiceItems(yearOptions, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        selectedYear = yearOptions[i];
+                        et_classYear.setText(selectedYear);
+                        dialogInterface.dismiss();
+                    }
+                });
+
+                mBuilder.show();
+            }
+        });
+        et_program.setClickable(true);
+        et_program.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(ClassRegisteration.this);
+                mBuilder.setTitle("Choose Program");
+                mBuilder.setSingleChoiceItems(programOptions, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        selectedPgm = programOptions[i];
+                        et_program.setText(selectedPgm);
+                        dialogInterface.dismiss();
+                    }
+                });
+                mBuilder.show();
+            }
+        });
+        et_section.setClickable(true);
+        et_section.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(ClassRegisteration.this);
+                mBuilder.setTitle("Choose Section");
+                mBuilder.setSingleChoiceItems(sectionOptions, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        selectedSec = sectionOptions[i];
+                        et_section.setText(selectedSec);
+                        dialogInterface.dismiss();
+                    }
+                });
+                mBuilder.show();
+            }
+        });
 
     }
 
@@ -68,10 +147,21 @@ public class ClassRegisteration extends AppCompatActivity implements View.OnClic
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_register:
-                firebaseHelper.setClassCallback(ClassRegisteration.this);
-                firebaseHelper.createClass(getClassModel());
-                break;
+                if (validateFields()) {
+
+                    firebaseHelper.setClassCallback(ClassRegisteration.this);
+                    firebaseHelper.createClass(getClassModel());
+                    break;
+                } else Toast.makeText(this, "Some fields are empty!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private boolean validateFields() {
+        if (selectedPgm.equals("") || selectedSec.equals("") || selectedShift.equals("") || selectedYear.equals("")
+                || et_batch.getText().toString().isEmpty() || et_classCode.getText().toString().isEmpty() || et_courseName.getText().toString().isEmpty() ||
+                et_courseNumber.getText().toString().isEmpty())
+            return false;
+        else return true;
     }
 
     private ClassModel getClassModel() {
@@ -88,7 +178,7 @@ public class ClassRegisteration extends AppCompatActivity implements View.OnClic
         cm.setShift(et_shift.getText().toString());
         cm.setClassCode(et_classCode.getText().toString());
         cm.setSection(et_section.getText().toString());
-        cm.setClassId(AppGenericClass.getInstance(this).getCurrentYear());
+        //cm.setClassId(AppGenericClass.getInstance(this).getCurrentYear());
         cm.setEnrolledStudents(enrolledStudents);
         cm.setShiftSectionProgram(AppGenericClass.getInstance(this).getCurrentYear());
         cm.setDetail();

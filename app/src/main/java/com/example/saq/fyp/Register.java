@@ -9,10 +9,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Register extends AppCompatActivity  implements FirebaseHelper.RegisterCallBack {
+public class Register extends AppCompatActivity implements FirebaseHelper.RegisterCallBack {
 
     private TextView tv_register;
-    private EditText name,email,mobile,pass,confirm_pass,uniName;
+    private EditText name, email, mobile, pass, confirm_pass, uniName;
     private FirebaseHelper firebaseHelper;
 
     @Override
@@ -33,13 +33,32 @@ public class Register extends AppCompatActivity  implements FirebaseHelper.Regis
         tv_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firebaseHelper.setRegisterCallBack(Register.this);
-                firebaseHelper.registerTeacher(getRegisterModel());
+                if (validateFields()) {
+                    if (passMathes()) {
+                        firebaseHelper.setRegisterCallBack(Register.this);
+                        firebaseHelper.registerTeacher(getRegisterModel());
+                    }
+
+                } else
+                    Toast.makeText(Register.this, "Some fields are empty!", Toast.LENGTH_SHORT).show();
+
             }
         });
 
 
+    }
 
+    private boolean passMathes() {
+        return pass.getText().toString().equals(confirm_pass.getText().toString());
+    }
+
+    private boolean validateFields() {
+        if (name.getText().toString().isEmpty() || pass.getText().toString().isEmpty() || confirm_pass.getText().toString().isEmpty() ||
+                email.getText().toString().isEmpty() || mobile.getText().toString().isEmpty() || uniName.getText().toString().isEmpty())
+            return false;
+        else {
+            return true;
+        }
     }
 
 
@@ -56,12 +75,12 @@ public class Register extends AppCompatActivity  implements FirebaseHelper.Regis
     }
 
     @Override
-    public void onRegister(boolean success,String id) {
+    public void onRegister(boolean success, String id) {
         if (success) {
-            AppGenericClass.getInstance(this).setPrefs(AppGenericClass.TOKEN,id);
+            AppGenericClass.getInstance(this).setPrefs(AppGenericClass.TOKEN, id);
             startActivity(new Intent(Register.this, Home.class));
-        }
-        else
-            Toast.makeText(Register.this, "User already present", Toast.LENGTH_SHORT).show();
+            finish();
+        } else
+            Toast.makeText(Register.this, "User already exist", Toast.LENGTH_SHORT).show();
     }
 }

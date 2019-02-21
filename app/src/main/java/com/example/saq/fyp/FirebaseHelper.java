@@ -165,7 +165,9 @@ public class FirebaseHelper {
         final AlertDialog dialog = new SpotsDialog.Builder().setContext(context).build();
         dialog.setMessage("Creating Class. Please wait...");
         dialog.show();
-        dbRef.child("Class").push().setValue(classModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+        String pushId = dbRef.child("Class").push().getKey();
+        classModel.setClassId(pushId);
+        dbRef.child("Class").child(pushId).setValue(classModel).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 dialog.dismiss();

@@ -35,6 +35,7 @@ public class StudentDetailAdapter extends RecyclerView.Adapter<StudentDetailAdap
 
     @Override
     public void onBindViewHolder(@NonNull MyVH holder, int position) {
+
         holder.seatNo.setText(students.get(position).getSeatNo());
 
     }

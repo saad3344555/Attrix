@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.saq.fyp.adapter.StudentDetailAdapter;
 import com.example.saq.fyp.common.Common;
@@ -31,11 +32,19 @@ public class ClassDetailsActivity extends AppCompatActivity {
         //Use static students
         students = new ArrayList<>();
         List<String> studentFaces = Home.SELECTED_CLASS.getEnrolledStudents();
-        for (String face_id : studentFaces) {
-            students.add(Common.getStudent(face_id));
+        if(!studentFaces.get(0).equals("-1"))
+        {
+            Log.e("studentFaces", studentFaces.size() + "");
+            for (String face_id : studentFaces) {
+                students.add(Common.getStudent(face_id));
+            }
+            Log.e("StudentSize", students.size() + "");
+            if (students.size() > 0) {
+                adapter = new StudentDetailAdapter(students, ClassDetailsActivity.this);
+                rv_students.setAdapter(adapter);
+            }
         }
-        adapter = new StudentDetailAdapter(students, ClassDetailsActivity.this);
-        rv_students.setAdapter(adapter);
+
 
 
     }

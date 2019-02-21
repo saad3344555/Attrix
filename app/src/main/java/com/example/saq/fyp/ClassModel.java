@@ -1,5 +1,7 @@
 package com.example.saq.fyp;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 public class ClassModel {
@@ -22,7 +24,6 @@ public class ClassModel {
     public void setEnrolledStudents(List<String> enrolledStudents) {
         this.enrolledStudents = enrolledStudents;
     }
-
 
 
     public String getClassCode() {
@@ -75,7 +76,7 @@ public class ClassModel {
     }
 
     public void setYearOfTeaching(String yearOfTeaching) {
-        this.yearOfTeaching = yearOfTeaching;
+        this.yearOfTeaching = yearOfTeaching + "-" + new SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime());
     }
 
     public String getShift() {

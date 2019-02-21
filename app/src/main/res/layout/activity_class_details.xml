@@ -22,7 +22,7 @@
         android:layout_below="@+id/ll_toolbar"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"
-        android:text="Total Classes="
+        android:text="Total Classes=0"
         android:textSize="20sp"
         android:textStyle="bold" />
 
