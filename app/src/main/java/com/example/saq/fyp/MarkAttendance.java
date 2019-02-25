@@ -55,7 +55,7 @@ public class MarkAttendance extends AppCompatActivity {
     List<Attendance> attendanceList;
     ProgressDialog progressDialog;
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-    private FaceServiceRestClient faceServiceRestClient = new FaceServiceRestClient("https://westcentralus.api.cognitive.microsoft.com/face/v1.0", "f4d0c60f29634336b2c4c6dd0357bebe");
+    private FaceServiceRestClient faceServiceRestClient = new FaceServiceRestClient("https://westcentralus.api.cognitive.microsoft.com/face/v1.0", "8944efc23c1246dab94545b72ebe1ba4");
 
     List<AttendanceModel> attendanceModels = new ArrayList<>();
     private String date = "";
@@ -65,7 +65,7 @@ public class MarkAttendance extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mark_attendance);
 
-        personGroupId = Home.SELECTED_CLASS.getYearOfTeaching() + "-" + new SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime());
+        personGroupId = Home.SELECTED_CLASS.getYearOfTeaching();
         setAttendanceList(Home.SELECTED_CLASS.getEnrolledStudents());
 
         Log.e("GroupId", personGroupId);
@@ -375,7 +375,7 @@ public class MarkAttendance extends AppCompatActivity {
         attendanceModel.setSectionName(Home.SELECTED_CLASS.getSection());
         attendanceModel.setShift(Home.SELECTED_CLASS.getShift());
         attendanceModel.setCourseNo(Home.SELECTED_CLASS.getCourseNo());
-        attendanceModel.setYear(Home.SELECTED_CLASS.getYearOfTeaching() + "-" + new SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime()));
+        attendanceModel.setYear(Home.SELECTED_CLASS.getYearOfTeaching());
         FirebaseDatabase.getInstance().getReference("Attendance").child(Home.SELECTED_CLASS.courseNo).child(date).setValue(attendanceModel);
     }
 }

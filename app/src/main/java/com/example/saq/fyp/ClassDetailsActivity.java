@@ -56,6 +56,7 @@ public class ClassDetailsActivity extends AppCompatActivity {
                     AttendanceModel model = data.getValue(AttendanceModel.class);
                     Common.attendanceModels.add(model);
                 }
+                dialog.dismiss();
                 getEnrolledStudentsList();
 
             }

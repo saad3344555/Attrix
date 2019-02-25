@@ -76,7 +76,7 @@ public class ClassModel {
     }
 
     public void setYearOfTeaching(String yearOfTeaching) {
-        this.yearOfTeaching = yearOfTeaching + "-" + new SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime());
+        this.yearOfTeaching = yearOfTeaching;
     }
 
     public String getShift() {
@@ -108,7 +108,7 @@ public class ClassModel {
     }
 
     public void setClassId(String year) {
-        this.classId = yearOfTeaching + "-" + year;
+        this.classId = year;
     }
 
     public ClassModel(String courseNo, String Title, String Detail) {

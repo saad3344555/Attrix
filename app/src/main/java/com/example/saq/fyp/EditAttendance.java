@@ -154,7 +154,7 @@ public class EditAttendance extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 dialog.dismiss();
                 if (dataSnapshot.getChildrenCount() > 0) {
-                    Log.e("key", dataSnapshot.getKey());
+                    Log.e("data", dataSnapshot.toString());
                     Log.e("value", dataSnapshot.getValue().toString());
                     AttendanceModel attendanceModel = dataSnapshot.getValue(AttendanceModel.class);
                     if (isClassMatched(attendanceModel)) {
@@ -162,8 +162,11 @@ public class EditAttendance extends AppCompatActivity {
                         rv_attendance.setVisibility(View.VISIBLE);
                         rv_attendance.setAdapter(new AttendanceListAdapter(EditAttendance.this, attendanceModels));
                     }
-                } else
+                } else {
+                    rv_attendance.setVisibility(View.GONE);
                     Toast.makeText(EditAttendance.this, "No records found!", Toast.LENGTH_SHORT).show();
+                }
+
             }
 
 
@@ -176,8 +179,7 @@ public class EditAttendance extends AppCompatActivity {
     }
 
     private boolean isClassMatched(AttendanceModel attendanceModel) {
-        if (attendanceModel.getYear().equals(Home.SELECTED_CLASS.getYearOfTeaching() + "-"
-                + new SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime()))
+        if (attendanceModel.getYear().equals(Home.SELECTED_CLASS.getYearOfTeaching())
                 && attendanceModel.getProgram().equals(Home.SELECTED_CLASS.getProgram())
                 && attendanceModel.getSectionName().equals(Home.SELECTED_CLASS.getSection())
                 && attendanceModel.getShift().equals(Home.SELECTED_CLASS.getShift())

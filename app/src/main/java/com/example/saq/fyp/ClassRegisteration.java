@@ -15,7 +15,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class ClassRegisteration extends AppCompatActivity implements View.OnClickListener, FirebaseHelper.ClassCallback {
@@ -168,9 +170,8 @@ public class ClassRegisteration extends AppCompatActivity implements View.OnClic
         ClassModel cm = new ClassModel();
         List<String> enrolledStudents = new ArrayList<>();
         enrolledStudents.add("-1");
-        cm.setYearOfTeaching(et_classYear.getText().toString());
         cm.setBatchNo(et_batch.getText().toString());
-        cm.setYearOfTeaching(et_classYear.getText().toString());
+        cm.setYearOfTeaching(et_classYear.getText().toString() + "-" + new SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime()));
         cm.setProgram(et_program.getText().toString());
         cm.setTitle(et_courseName.getText().toString());
         cm.setCourseNo(et_courseNumber.getText().toString());

@@ -51,7 +51,7 @@ public class ClassRyclerAdapter extends RecyclerView.Adapter<ClassRyclerAdapter.
         holder.tv_courseNo.setText(model.getCourseNo());
         String text = model.getYearOfTeaching() + " Year" + "-" + model.getShiftSectionProgram();
         Log.e("text", text);
-        holder.clteachername.setText(model.getYearOfTeaching() + " Year-" + model.getProgram() + "-" + model.getShift() + "-" + model.getSection());
+        holder.clteachername.setText(model.getYearOfTeaching() +" "+model.getProgram() + "-" + model.getShift() + "-" + model.getSection());
     }
 
     @Override
