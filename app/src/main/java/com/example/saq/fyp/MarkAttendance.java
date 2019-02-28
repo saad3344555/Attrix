@@ -55,7 +55,7 @@ public class MarkAttendance extends AppCompatActivity {
     List<Attendance> attendanceList;
     ProgressDialog progressDialog;
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-    private FaceServiceRestClient faceServiceRestClient = new FaceServiceRestClient("https://westcentralus.api.cognitive.microsoft.com/face/v1.0", "8944efc23c1246dab94545b72ebe1ba4");
+    private FaceServiceRestClient faceServiceRestClient = new FaceServiceRestClient("https://westcentralus.api.cognitive.microsoft.com/face/v1.0", "ed27c09cdaf94afabbbbda6492099350");
 
     List<AttendanceModel> attendanceModels = new ArrayList<>();
     private String date = "";
@@ -75,7 +75,7 @@ public class MarkAttendance extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        imageBytes = getIntent().getByteArrayExtra("AttedanceImageBytes");
+        // imageBytes = getIntent().getByteArrayExtra("AttedanceImageBytes");
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Marking Attendance");
@@ -218,22 +218,29 @@ public class MarkAttendance extends AppCompatActivity {
         @Override
         protected void onPostExecute(IdentifyResult[] identifyResult) {
             progressDialog.dismiss();
-            if (identifyResult.length > 0) {
-                for (IdentifyResult result : identifyResult) {
 
-                    try {
-                        //Log.e("candidates", String.valueOf(result.candidates.size()));
-                        Log.e("personId", result.candidates.get(0).personId + "");
-                        updateStudentAttendaceStatus(result.candidates.get(0).personId);
-                        //save person id in array here
-                        new PersonDetectTask(this.personGroupId).execute(result.candidates.get(0).personId);
-                    } catch (Exception e) {
-                        Log.e("Taskcandidates", e.getMessage());
+            try {
+                Log.e("Size", identifyResult.length + "");
+                if (identifyResult.length > 0) {
+                    for (IdentifyResult result : identifyResult) {
+
+                        try {
+                            //Log.e("candidates", String.valueOf(result.candidates.size()));
+                            Log.e("personId", result.candidates.get(0).personId + "");
+                            updateStudentAttendaceStatus(result.candidates.get(0).personId);
+                            //save person id in array here
+                            new PersonDetectTask(this.personGroupId).execute(result.candidates.get(0).personId);
+                        } catch (Exception e) {
+                            Log.e("Taskcandidates", e.getMessage());
+                        }
+
                     }
+                } else
+                    Log.e(MainActivity.class.getSimpleName(), "IdentifyArray is empty");
+            } catch (Exception e) {
+                Log.e("EceptionIdentify", e.getMessage());
+            }
 
-                }
-            } else
-                Log.e(MainActivity.class.getSimpleName(), "IdentifyArray is empty");
 
         }
 

@@ -177,7 +177,7 @@ public class Home extends AppCompatActivity implements ClassRyclerAdapter.Camera
                             try {
                                 stream.close();
                                 Intent in = new Intent(Home.this, MarkAttendance.class);
-                                in.putExtra("AttedanceImageBytes", byteArray);
+                                //in.putExtra("AttedanceImageBytes", byteArray);
                                 startActivity(in);
                             } catch (IOException e) {
                                 Log.e("IOException", e.getMessage());
@@ -202,6 +202,7 @@ public class Home extends AppCompatActivity implements ClassRyclerAdapter.Camera
                         bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), pickedImage);
                         final Handler handler = new Handler();
                         final Bitmap finalBitmap = bitmap;
+                        ATTENDACE_IMAGE =bitmap;
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
@@ -216,7 +217,7 @@ public class Home extends AppCompatActivity implements ClassRyclerAdapter.Camera
                                 try {
                                     stream.close();
                                     Intent in = new Intent(Home.this, MarkAttendance.class);
-                                    in.putExtra("AttedanceImageBytes", byteArray);
+                                   // in.putExtra("AttedanceImageBytes", byteArray);
                                     startActivity(in);
                                 } catch (IOException e) {
                                     Log.e("IOException", e.getMessage());

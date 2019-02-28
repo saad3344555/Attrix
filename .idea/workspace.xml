@@ -6,6 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="person" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
@@ -15,22 +16,16 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc017e0f-fc70-4cca-841e-8293a9da8a34" name="Default" comment="Attendance 100% done.">
+    <list default="true" id="cc017e0f-fc70-4cca-841e-8293a9da8a34" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskJars.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassDetailsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassDetailsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassRegisteration.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassRegisteration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassRyclerAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassRyclerAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/EditAttendance.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/EditAttendance.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/Home.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/Home.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/MarkAttendance.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/MarkAttendance.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -68,9 +63,15 @@
       <file leaf-file-name="StudentDetailAdapter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/adapter/StudentDetailAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
+            <state relative-caret-position="816">
               <caret line="68" column="56" lean-forward="false" selection-start-line="68" selection-start-column="56" selection-end-line="68" selection-end-column="56" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1431#1432#0" expanded="false" />
+                <element signature="e#1469#1470#0" expanded="false" />
+                <element signature="e#2996#2997#0" expanded="false" />
+                <element signature="e#3068#3069#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -91,9 +92,11 @@
       <file leaf-file-name="FirebaseHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/FirebaseHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
+            <state relative-caret-position="2550">
               <caret line="168" column="19" lean-forward="false" selection-start-line="168" selection-start-column="19" selection-end-line="168" selection-end-column="19" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,7 +104,7 @@
       <file leaf-file-name="ClassModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
+            <state relative-caret-position="867">
               <caret line="73" column="18" lean-forward="false" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="18" />
               <folding>
                 <element signature="e#1628#1629#0" expanded="true" />
@@ -118,34 +121,43 @@
       <file leaf-file-name="ClassRegisteration.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassRegisteration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
+            <state relative-caret-position="2601">
               <caret line="171" column="35" lean-forward="false" selection-start-line="171" selection-start-column="35" selection-end-line="171" selection-end-column="35" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MarkAttendance.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MarkAttendance.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/MarkAttendance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="377" column="71" lean-forward="false" selection-start-line="377" selection-start-column="71" selection-end-line="377" selection-end-column="71" />
+            <state relative-caret-position="374">
+              <caret line="140" column="51" lean-forward="false" selection-start-line="140" selection-start-column="51" selection-end-line="140" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditAttendance.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Home.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/Home.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="884">
+              <caret line="219" column="37" lean-forward="false" selection-start-line="219" selection-start-column="37" selection-end-line="219" selection-end-column="37" />
+              <folding>
+                <element signature="method#getStudents#0;class#Home#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EditAttendance.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/EditAttendance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="76" column="30" lean-forward="true" selection-start-line="76" selection-start-column="30" selection-end-line="76" selection-end-column="30" />
-              <folding>
-                <element signature="e#1860#3608#0" expanded="true" />
-                <element signature="e#3607#3608#0" expanded="true" />
-                <element signature="e#4738#4938#0" expanded="true" />
-                <element signature="e#4937#4938#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="271">
+              <caret line="160" column="71" lean-forward="false" selection-start-line="160" selection-start-column="71" selection-end-line="160" selection-end-column="71" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -153,9 +165,13 @@
       <file leaf-file-name="ClassRyclerAdapter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassRyclerAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
+            <state relative-caret-position="765">
               <caret line="62" column="39" lean-forward="false" selection-start-line="62" selection-start-column="39" selection-end-line="62" selection-end-column="39" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#2048#2049#0" expanded="false" />
+                <element signature="e#2085#2086#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -163,23 +179,12 @@
       <file leaf-file-name="ClassDetailsActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassDetailsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
+            <state relative-caret-position="663">
               <caret line="58" column="33" lean-forward="false" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="detail_rv_item.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/detail_rv_item.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="29" lean-forward="false" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
           </provider>
         </entry>
       </file>
@@ -2490,7 +2495,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/Attrix.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/model/Student.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/AttendanceListAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/Home.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/AttendanceModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_mark_attendance.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/socialroundedbutton.xml" />
@@ -2510,8 +2514,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassRegisteration.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassRyclerAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassDetailsActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/MarkAttendance.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/EditAttendance.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/Home.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/MarkAttendance.java" />
       </list>
     </option>
   </component>
@@ -2590,62 +2595,18 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Attrix" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fyp" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Attrix" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fyp" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adapter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="AppGene&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/java/com/example/saq/fyp/AppGenericClass.java&#10;Register&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/java/com/example/saq/fyp/Register.java&#10;Login&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/java/com/example/saq/fyp/Login.java&#10;Fire&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/java/com/example/saq/fyp/FirebaseHelper.java&#10;Home&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/java/com/example/saq/fyp/Home.java&#10;regi&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/java/com/example/saq/fyp/ClassRegisteration.java&#10;App&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/java/com/example/saq/fyp/AppGenericClass.java&#10;Class&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/res/layout/activity_class_registeration.xml&#10;Registe&#9;PSI&#9;JAVA://com.example.saq.fyp.FirebaseHelper.RegisterCallBack&#10;RegisterA&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/res/layout/activity_class_registeration.xml&#10;login.xml&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/res/layout/login.xml&#10;item&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/res/layout/item_list_attendance.xml&#10;activi&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/res/layout/activity_register.xml&#10;Adapter&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/java/com/example/saq/fyp/ClassRyclerAdapter.java&#10;color&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/res/values/colors.xml&#10;login&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/res/layout/login.xml&#10;style&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/res/values/styles.xml&#10;activ&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/res/layout/activity_register.xml" />
+    <property name="SearchEverywhereHistoryKey" value="Com&#9;FILE&#9;file://D:/projects/a/attrixt/Attrix/app/src/main/java/com/example/saq/fyp/common/Common.java&#10;AppGene&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/java/com/example/saq/fyp/AppGenericClass.java&#10;Register&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/java/com/example/saq/fyp/Register.java&#10;Login&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/java/com/example/saq/fyp/Login.java&#10;Fire&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/java/com/example/saq/fyp/FirebaseHelper.java&#10;Home&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/java/com/example/saq/fyp/Home.java&#10;regi&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/java/com/example/saq/fyp/ClassRegisteration.java&#10;App&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/java/com/example/saq/fyp/AppGenericClass.java&#10;Class&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/res/layout/activity_class_registeration.xml&#10;Registe&#9;PSI&#9;JAVA://com.example.saq.fyp.FirebaseHelper.RegisterCallBack&#10;RegisterA&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/res/layout/activity_class_registeration.xml&#10;login.xml&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/res/layout/login.xml&#10;item&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/res/layout/item_list_attendance.xml&#10;activi&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/res/layout/activity_register.xml&#10;Adapter&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/java/com/example/saq/fyp/ClassRyclerAdapter.java&#10;color&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/res/values/colors.xml&#10;login&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/res/layout/login.xml&#10;style&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/res/values/styles.xml&#10;activ&#9;FILE&#9;file://C:/Users/tos/Documents/FYP/app/src/main/res/layout/activity_register.xml" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/sdk" />
-    <property name="device.picker.selection" value="ZY223V3WJ8" />
+    <property name="device.picker.selection" value="26EBB18425201589" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../AttrixStudent" />
     <property name="settings.editor.selected.configurable" value="preferences.updates" />
@@ -2750,7 +2711,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1551109662146" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1551371844098" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2798,7 +2759,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1551109662147" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1551371844098" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2989,7 +2950,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1551109662148" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1551371844099" />
       </method>
     </configuration>
     <list size="1">
@@ -3043,7 +3004,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550777213220</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Attendance 100% done.">
+      <created>1551109687190</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1551109687190</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3063,7 +3031,7 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Flutter Outline" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41666666" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46422628" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -3224,14 +3192,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/Attrix.java">
@@ -3431,21 +3399,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/Home.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="69" column="25" lean-forward="false" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#getStudents#0;class#Home#0" expanded="false" />
-            <element signature="e#5972#5973#0" expanded="false" />
-            <element signature="e#6020#6021#0" expanded="false" />
-            <element signature="e#9674#9675#0" expanded="false" />
-            <element signature="e#9713#9714#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/AttendanceModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -3484,60 +3437,65 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/common/Common.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#setStudents#0;class#Common#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/FirebaseHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
+        <state relative-caret-position="2550">
           <caret line="168" column="19" lean-forward="false" selection-start-line="168" selection-start-column="19" selection-end-line="168" selection-end-column="19" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassRegisteration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
+        <state relative-caret-position="2601">
           <caret line="171" column="35" lean-forward="false" selection-start-line="171" selection-start-column="35" selection-end-line="171" selection-end-column="35" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassRyclerAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
+        <state relative-caret-position="765">
           <caret line="62" column="39" lean-forward="false" selection-start-line="62" selection-start-column="39" selection-end-line="62" selection-end-column="39" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2048#2049#0" expanded="false" />
+            <element signature="e#2085#2086#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassDetailsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
+        <state relative-caret-position="663">
           <caret line="58" column="33" lean-forward="false" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/adapter/StudentDetailAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
+        <state relative-caret-position="816">
           <caret line="68" column="56" lean-forward="false" selection-start-line="68" selection-start-column="56" selection-end-line="68" selection-end-column="56" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1431#1432#0" expanded="false" />
+            <element signature="e#1469#1470#0" expanded="false" />
+            <element signature="e#2996#2997#0" expanded="false" />
+            <element signature="e#3068#3069#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/ClassModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
+        <state relative-caret-position="867">
           <caret line="73" column="18" lean-forward="false" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="18" />
           <folding>
             <element signature="e#1628#1629#0" expanded="true" />
@@ -3550,24 +3508,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/MarkAttendance.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/common/Common.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="377" column="71" lean-forward="false" selection-start-line="377" selection-start-column="71" selection-end-line="377" selection-end-column="71" />
-          <folding />
+        <state relative-caret-position="255">
+          <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setStudents#0;class#Common#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/Home.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="219" column="37" lean-forward="false" selection-start-line="219" selection-start-column="37" selection-end-line="219" selection-end-column="37" />
+          <folding>
+            <element signature="method#getStudents#0;class#Home#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/EditAttendance.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="76" column="30" lean-forward="true" selection-start-line="76" selection-start-column="30" selection-end-line="76" selection-end-column="30" />
-          <folding>
-            <element signature="e#1860#3608#0" expanded="true" />
-            <element signature="e#3607#3608#0" expanded="true" />
-            <element signature="e#4738#4938#0" expanded="true" />
-            <element signature="e#4937#4938#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="271">
+          <caret line="160" column="71" lean-forward="false" selection-start-line="160" selection-start-column="71" selection-end-line="160" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/saq/fyp/MarkAttendance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="140" column="51" lean-forward="false" selection-start-line="140" selection-start-column="51" selection-end-line="140" selection-end-column="51" />
+          <folding />
         </state>
       </provider>
     </entry>
