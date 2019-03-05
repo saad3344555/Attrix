@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Attrix.iml" filepath="$PROJECT_DIR$/Attrix.iml" />
-      <module fileurl="file://D:\projects\a\attrixt\Attrix\AttrixTeacher.iml" filepath="D:\projects\a\attrixt\Attrix\AttrixTeacher.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

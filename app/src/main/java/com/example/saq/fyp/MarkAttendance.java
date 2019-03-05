@@ -383,6 +383,6 @@ public class MarkAttendance extends AppCompatActivity {
         attendanceModel.setShift(Home.SELECTED_CLASS.getShift());
         attendanceModel.setCourseNo(Home.SELECTED_CLASS.getCourseNo());
         attendanceModel.setYear(Home.SELECTED_CLASS.getYearOfTeaching());
-        FirebaseDatabase.getInstance().getReference("Attendance").child(Home.SELECTED_CLASS.courseNo).child(date).setValue(attendanceModel);
+        FirebaseDatabase.getInstance().getReference("Attendance").child(Home.SELECTED_CLASS.getClassId()).child(date).setValue(attendanceModel);
     }
 }

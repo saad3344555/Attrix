@@ -25,102 +25,110 @@ import java.util.List;
  */
 
 public class StudentDetailAdapter extends RecyclerView.Adapter<StudentDetailAdapter.MyVH> {
-    private List<Student> students = new ArrayList<>();
-    private Context con;
+  private List<Student> students = new ArrayList<>();
+  private Context con;
 
-    public StudentDetailAdapter(List<Student> students, Context con) {
-        this.students = students;
-        this.con = con;
-    }
+  public StudentDetailAdapter(List<Student> students, Context con) {
+    this.students = students;
+    this.con = con;
+  }
 
-    @NonNull
-    @Override
-    public MyVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyVH(LayoutInflater.from(parent.getContext()).inflate(R.layout.detail_rv_item, parent, false));
-    }
+  @NonNull
+  @Override
+  public MyVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    return new MyVH(LayoutInflater.from(parent.getContext()).inflate(R.layout.detail_rv_item, parent, false));
+  }
 
-    @Override
-    public void onBindViewHolder(@NonNull MyVH holder, int position) {
+  @Override
+  public void onBindViewHolder(@NonNull MyVH holder, int position) {
 
-        holder.seatNo.setText(students.get(position).getSeatNo());
+    holder.seatNo.setText(students.get(position).getSeatNo());
 
-    }
+  }
 
-    @Override
-    public int getItemCount() {
-        return students.size();
-    }
+  @Override
+  public int getItemCount() {
+    return students.size();
+  }
 
-    public class MyVH extends RecyclerView.ViewHolder {
-        TextView seatNo;
-        FrameLayout details;
+  public class MyVH extends RecyclerView.ViewHolder {
+    TextView seatNo;
+    FrameLayout details;
 
-        public MyVH(View itemView) {
-            super(itemView);
-            details = itemView.findViewById(R.id.details);
-            seatNo = itemView.findViewById(R.id.seatNo);
+    public MyVH(View itemView) {
+      super(itemView);
+      details = itemView.findViewById(R.id.details);
+      seatNo = itemView.findViewById(R.id.seatNo);
 
-            details.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+      details.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
 
-                    View view = LayoutInflater.from(con).inflate(R.layout.detail_dialog, null);
-                    String faceId = students.get(getAdapterPosition()).getFaceId();
-                    int presentCount = getPresentCount(faceId);
-                    int absentCount = getAbsentCount(faceId);
+          View view = LayoutInflater.from(con).inflate(R.layout.detail_dialog, null);
+          String faceId = students.get(getAdapterPosition()).getFaceId();
+          int presentCount = getPresentCount(faceId);
+          int absentCount = getAbsentCount(faceId);
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(con);
-                    builder.setTitle("Details");
-                    builder.setView(view);
-                    TextView name, present, absent;
-                    name = view.findViewById(R.id.name);
-                    absent = view.findViewById(R.id.absent);
-                    present = view.findViewById(R.id.present);
-                    name.setText(Common.getName(faceId));
-                    present.setText(presentCount + "");
-                    absent.setText(absentCount + "");
+          AlertDialog.Builder builder = new AlertDialog.Builder(con);
+          builder.setTitle("Details");
+          builder.setView(view);
+          TextView name, present, absent,attendancePercentage;
+          int total = presentCount + absentCount;
 
-                    builder.setPositiveButton("Close", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-                    //show dialog
-                    builder.show();
-                }
-            });
+          double percentage = ((float)presentCount / (float)total) * 100;
 
-        }
-    }
+          percentage =  (int) percentage;
 
-    private int getAbsentCount(String faceId) {
-        int count = 0;
-        for (AttendanceModel model : Common.attendanceModels) {
-            List<Attendance> attendanceList = model.getAttendanceList();
-            for (Attendance attendacne : attendanceList) {
-                if (attendacne.getFace_id().equals(faceId)) {
-                    if (!attendacne.is_present)
-                        count = count + 1;
-                    break;
-                }
+
+          name = view.findViewById(R.id.name);
+          attendancePercentage = view.findViewById(R.id.percentage);
+          absent = view.findViewById(R.id.absent);
+          present = view.findViewById(R.id.present);
+          name.setText(Common.getName(faceId));
+          present.setText(presentCount + "");
+          absent.setText(absentCount + "");
+          attendancePercentage.setText(percentage + "%");
+          builder.setPositiveButton("Close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+              dialog.dismiss();
             }
+          });
+          //show dialog
+          builder.show();
         }
-        return count;
-    }
+      });
 
-    private int getPresentCount(String faceId) {
-        int count = 0;
-        for (AttendanceModel model : Common.attendanceModels) {
-            List<Attendance> attendanceList = model.getAttendanceList();
-            for (Attendance attendacne : attendanceList) {
-                if (attendacne.getFace_id().equals(faceId)) {
-                    if (attendacne.is_present)
-                        count = count + 1;
-                    break;
-                }
-            }
-        }
-        return count;
     }
+  }
+
+  private int getAbsentCount(String faceId) {
+    int count = 0;
+    for (AttendanceModel model : Common.attendanceModels) {
+      List<Attendance> attendanceList = model.getAttendanceList();
+      for (Attendance attendacne : attendanceList) {
+        if (attendacne.getFace_id().equals(faceId)) {
+          if (!attendacne.is_present)
+            count = count + 1;
+          break;
+        }
+      }
+    }
+    return count;
+  }
+
+  private int getPresentCount(String faceId) {
+    int count = 0;
+    for (AttendanceModel model : Common.attendanceModels) {
+      List<Attendance> attendanceList = model.getAttendanceList();
+      for (Attendance attendacne : attendanceList) {
+        if (attendacne.getFace_id().equals(faceId)) {
+          if (attendacne.is_present)
+            count = count + 1;
+          break;
+        }
+      }
+    }
+    return count;
+  }
 }

@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.example.saq.fyp.model.Student;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dmax.dialog.SpotsDialog;
+import io.paperdb.Paper;
 
 public class FirebaseHelper {
 
@@ -35,27 +37,35 @@ public class FirebaseHelper {
     RegisterCallBack registerCallBack;
     ClassCallback classCallback;
     GetClassCallback getClassCallback;
+    StudentCallback studentCallback;
 
-    public interface ClassCallback{
+    public interface ClassCallback {
         void onCreated(int code);
     }
 
-    public interface GetClassCallback{
+    public interface StudentCallback {
+        void report(Student student,int pos);
+    }
+
+    public interface GetClassCallback {
         void getClasses(List<ClassModel> classModel);
     }
 
-    public interface StoreImageCallBack{
+    public interface StoreImageCallBack {
         void onSuccess(Uri uri);
     }
 
     public interface SignInCallBack {
-        void onSignIn(int code,String id);
+        void onSignIn(int code, String id);
     }
 
     public interface RegisterCallBack {
-        void onRegister(boolean success,String id);
+        void onRegister(boolean success, String id);
     }
 
+    public void setStudentCallback(StudentCallback studentCallback) {
+        this.studentCallback = studentCallback;
+    }
 
     public void setClassCallback(ClassCallback classCallback) {
         this.classCallback = classCallback;
@@ -79,6 +89,36 @@ public class FirebaseHelper {
         this.dbRef = FirebaseDatabase.getInstance().getReference();
         this.context = context;
     }
+
+    public void getRecordFromFaceId(final String faceId, final int pos) {
+
+        final AlertDialog dialog = new SpotsDialog.Builder().setContext(context).build();
+        dialog.setMessage("Loading Student...");
+        dialog.show();
+        dbRef.child("Student").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                dialog.dismiss();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Student model = snapshot.getValue(Student.class);
+                    if (model.getFaceId().equals(faceId)) {
+                        try {
+                            studentCallback.report(model,pos);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                dialog.dismiss();
+            }
+        });
+    }
+
 
 //
 //    public void uploadImage(final Uri image){
@@ -132,6 +172,7 @@ public class FirebaseHelper {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 dialog.dismiss();
+                Paper.book().delete("User");
                 boolean exists = false;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     SignInUpModel model = snapshot.getValue(SignInUpModel.class);
@@ -143,10 +184,11 @@ public class FirebaseHelper {
                 if (!exists) {
                     String key = dbRef.child("Teacher").push().getKey();
                     signInUpModel.setId(key);
+                    Paper.book().write("User",signInUpModel);
                     dbRef.child("Teacher").child(key).setValue(signInUpModel);
-                    registerCallBack.onRegister(true,key);
+                    registerCallBack.onRegister(true, key);
                 } else
-                    registerCallBack.onRegister(false,null);
+                    registerCallBack.onRegister(false, null);
 
             }
 
@@ -157,7 +199,6 @@ public class FirebaseHelper {
             }
         });
     }
-
 
 
     public void createClass(final ClassModel classModel) {
@@ -177,7 +218,7 @@ public class FirebaseHelper {
             @Override
             public void onFailure(@NonNull Exception e) {
                 dialog.dismiss();
-                Log.d("ClassCreation Error",e.toString());
+                Log.d("ClassCreation Error", e.toString());
                 e.printStackTrace();
                 classCallback.onCreated(202);
             }
@@ -190,10 +231,13 @@ public class FirebaseHelper {
         final AlertDialog dialog = new SpotsDialog.Builder().setContext(context).build();
         dialog.setMessage("Logging In. Please wait...");
         dialog.show();
+
         dbRef.child("Teacher").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 dialog.dismiss();
+
+                Paper.book().delete("User");
 
                 boolean mobileMatch;
                 boolean passMatch;
@@ -205,15 +249,17 @@ public class FirebaseHelper {
                     passMatch = pass.equals(model.getPass());
 
                     if (mobileMatch && passMatch) {
-                        signInCallBack.onSignIn(200,model.getId());
+
+                        Paper.book().write("User",model);
+                        signInCallBack.onSignIn(200, model.getId());
                         return;
                     } else if (mobileMatch && !passMatch) {
-                        signInCallBack.onSignIn(201,null);
+                        signInCallBack.onSignIn(201, null);
                         return;
                     }
                 }
 
-                signInCallBack.onSignIn(202,null);
+                signInCallBack.onSignIn(202, null);
             }
 
             @Override
@@ -236,7 +282,7 @@ public class FirebaseHelper {
 
                 List<ClassModel> classModels = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    if(snapshot.getValue(ClassModel.class).getTeacherId().equals(teacherId)){
+                    if (snapshot.getValue(ClassModel.class).getTeacherId().equals(teacherId)) {
                         classModels.add(snapshot.getValue(ClassModel.class));
                     }
                 }

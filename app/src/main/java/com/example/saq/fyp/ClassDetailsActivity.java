@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.saq.fyp.adapter.StudentDetailAdapter;
@@ -17,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +32,7 @@ public class ClassDetailsActivity extends AppCompatActivity {
     TextView classCountTv;
     List<AttendanceModel> attendanceModelList = new ArrayList<>();
     ProgressDialog dialog;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,11 @@ public class ClassDetailsActivity extends AppCompatActivity {
         rv_students = findViewById(R.id.rv_students);
         rv_students.setLayoutManager(new LinearLayoutManager(this));
 
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setTitle("Class Details");
         dialog = new ProgressDialog(this);
         dialog.setTitle("Fetching details");
         dialog.setMessage("Please Wait");
@@ -47,10 +56,11 @@ public class ClassDetailsActivity extends AppCompatActivity {
     }
 
     private void getAttendanceCount() {
-        DatabaseReference attRef = FirebaseDatabase.getInstance().getReference("Attendance").child(Home.SELECTED_CLASS.courseNo);
+        DatabaseReference attRef = FirebaseDatabase.getInstance().getReference("Attendance").child(Home.SELECTED_CLASS.getClassId());
         attRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Common.attendanceModels.clear();
                 classCountTv.setText("Total Classes = " + dataSnapshot.getChildrenCount());
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     AttendanceModel model = data.getValue(AttendanceModel.class);
@@ -83,7 +93,18 @@ public class ClassDetailsActivity extends AppCompatActivity {
                 rv_students.setAdapter(adapter);
             }
         }
+    }
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                //NavUtils.navigateUpFromSameTask(this);
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

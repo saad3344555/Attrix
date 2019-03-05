@@ -8,21 +8,26 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.saq.fyp.model.Attendance;
+import com.example.saq.fyp.model.Student;
+
 public class AttedanceDialog extends Dialog {
 
-    AttendanceModel attendanceModel;
+    Attendance attendanceModel;
+    Student student;
     AttendanceInterface attendanceInterface;
     int itemPos = -1;
-    TextView tv_absent,tv_present, tv_name,tv_fatherName,tv_classId,tv_seatNo;
+    TextView tv_absent,tv_present, tv_name, tv_mobileNo,tv_classId,tv_seatNo;
 
     public interface AttendanceInterface{
         public void onAction(boolean isPresent,int itemPos);
     }
 
-    public AttedanceDialog(@NonNull Context context,AttendanceModel attendanceModel,AttendanceInterface attendanceInterface) {
+    public AttedanceDialog(@NonNull Context context, Attendance attendance, Student student, AttendanceInterface attendanceInterface) {
         super(context);
         this.attendanceInterface = attendanceInterface;
-        this.attendanceModel = attendanceModel;
+        this.student = student;
+        this.attendanceModel = attendance;
 
         getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
@@ -39,21 +44,25 @@ public class AttedanceDialog extends Dialog {
         tv_absent = findViewById(R.id.tv_absent);
         tv_present = findViewById(R.id.tv_present);
         tv_name = findViewById(R.id.tv_name);
-        tv_fatherName = findViewById(R.id.tv_fatherName);
+        tv_mobileNo = findViewById(R.id.tv_mobileNo);
         tv_classId = findViewById(R.id.tv_classId);
         tv_seatNo = findViewById(R.id.tv_seatNo);
 
-        //tv_seatNo.setText(attendanceModel.get());
-       // tv_fatherName.setText(attendanceModel.getFathersName());
-        //tv_name.setText(attendanceModel.getStudentName());
-        tv_classId.setText(attendanceModel.getProgram()+ " " +
-                attendanceModel.getShift() + "" +
-                attendanceModel.getSectionName());
 
+        tv_seatNo.setText(student.getSeatNo());
+
+        tv_classId.setText(student.getProgram()+ " " +
+                student.getShift() + " " +
+                student.getSection());
+
+
+        tv_name.setText(student.getName());
+        tv_mobileNo.setText(student.getMobile());
 
         tv_absent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                attendanceModel.is_present = false;
                 attendanceInterface.onAction(false,itemPos);
                 dismiss();
             }
@@ -62,6 +71,7 @@ public class AttedanceDialog extends Dialog {
         tv_present.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                attendanceModel.is_present = true;
                 attendanceInterface.onAction(true,itemPos);
                 dismiss();
             }

@@ -19,6 +19,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.saq.fyp.Interfaces.ClassSelectedListener;
@@ -44,6 +45,7 @@ public class Home extends AppCompatActivity implements ClassRyclerAdapter.Camera
     private static final int RC_CAMERA = 420;
     private static final int RC_GALLERY = 421;
     FirebaseHelper firebaseHelper;
+    TextView tv_name,tv_institute;
     FloatingActionButton floatingActionButton;
     public static ClassModel SELECTED_CLASS = null;
     FloatingActionButton logout;
@@ -56,6 +58,12 @@ public class Home extends AppCompatActivity implements ClassRyclerAdapter.Camera
 
         setContentView(R.layout.home);
         logout = findViewById(R.id.logout);
+        tv_name = findViewById(R.id.tv_name);
+        tv_institute = findViewById(R.id.tv_institute);
+
+        SignInUpModel model = Paper.book().read("User",new SignInUpModel());
+        tv_institute.setText(model.getUniName() != null ? model.getUniName() : "");
+        tv_name.setText(model.getName() != null ? model.getName() : "");
 
         getStudents();
         AppGenericClass.getInstance(this).setPrefs(AppGenericClass.ONLINE, "true");

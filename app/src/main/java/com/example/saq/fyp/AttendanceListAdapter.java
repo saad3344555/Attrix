@@ -15,10 +15,12 @@ import android.widget.TextView;
 
 import com.example.saq.fyp.common.Common;
 import com.example.saq.fyp.model.Attendance;
+import com.example.saq.fyp.model.Student;
 
 import java.util.List;
 
-public class AttendanceListAdapter extends RecyclerView.Adapter<AttendanceListAdapter.AttendanceVH> implements AttedanceDialog.AttendanceInterface {
+public class AttendanceListAdapter extends RecyclerView.Adapter<AttendanceListAdapter.AttendanceVH> implements
+        AttedanceDialog.AttendanceInterface, FirebaseHelper.StudentCallback {
     private List<Attendance> attendanceModels;
     Context context;
 
@@ -40,8 +42,6 @@ public class AttendanceListAdapter extends RecyclerView.Adapter<AttendanceListAd
     @Override
     public void onBindViewHolder(@NonNull AttendanceListAdapter.AttendanceVH holder, int position) {
         Attendance model = attendanceModels.get(position);
-        Log.e("seatno", Common.getSeatNo(model.getFace_id()));
-        Log.e("faceid", model.face_id);
         holder.tv_seatNo.setText(Common.getSeatNo(model.getFace_id()));
         if (model.is_present) {
             holder.card.setCardBackgroundColor(context.getResources().getColor(R.color.color_light_blue));
@@ -50,7 +50,6 @@ public class AttendanceListAdapter extends RecyclerView.Adapter<AttendanceListAd
             holder.card.setCardBackgroundColor(context.getResources().getColor(R.color.color_light_red));
             holder.tv_attendance.setText("Absent");
         }
-        //holder.tv_attendance.setText("Absent");
     }
 
     @Override
@@ -60,8 +59,19 @@ public class AttendanceListAdapter extends RecyclerView.Adapter<AttendanceListAd
 
     @Override
     public void onAction(boolean isPresent, int itemPos) {
-        //attendanceModels.get(itemPos).setPresent(isPresent);
+//        attendanceModels.get(itemPos).setIs_present(isPresent);
         notifyDataSetChanged();
+    }
+
+    @Override
+    public void report(Student student,int pos) {
+        AttedanceDialog dialog = new AttedanceDialog(context, attendanceModels.get(pos),student, new AttedanceDialog.AttendanceInterface() {
+            @Override
+            public void onAction(boolean isPresent, int itemPos) {
+                notifyDataSetChanged();
+            }
+        });
+        dialog.show();
     }
 
     public class AttendanceVH extends RecyclerView.ViewHolder {
@@ -77,15 +87,14 @@ public class AttendanceListAdapter extends RecyclerView.Adapter<AttendanceListAd
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    try {
-//
-//                        AttedanceDialog attedanceDialog = new AttedanceDialog(context,
-//                                attendanceModels.get(getAdapterPosition()), AttendanceListAdapter.this);
-//                        attedanceDialog.setItemPos(getAdapterPosition());
-//                        attedanceDialog.show();
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
+                    try {
+                        FirebaseHelper fb = new FirebaseHelper(context);
+                        fb.setStudentCallback(AttendanceListAdapter.this);
+                        fb.getRecordFromFaceId(attendanceModels.get(getAdapterPosition()).getFace_id(),getAdapterPosition());
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             });
         }
